@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "212492031087",
+    "project_id": "test-flutter-d85fd",
+    "storage_bucket": "test-flutter-d85fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212492031087:android:e0fd3e78bdbe97402ee99a",
+        "android_client_info": {
+          "package_name": "com.gonza.crud"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3QSOopjj6cQxaHGEYjQiK4Q5kSlOM_n0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
