@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mi Aplicacióndf Flutter'),
+        title: Text('Mi Aplicación Flutter'),
       ),
       body: FutureBuilder(
         future: getPeople(),
@@ -35,8 +35,9 @@ class _HomeState extends State<Home> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/add');
+        onPressed: () async {
+          await Navigator.pushNamed(context, '/add');
+          setState(() {});
         },
         child: const Icon(Icons.add),
       ),
