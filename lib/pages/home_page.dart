@@ -22,11 +22,18 @@ class _HomeState extends State<Home> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
-              itemCount: snapshot.data?.length,
-              itemBuilder: (context, index) {
-                return Text(snapshot.data?[index]['name']);
-              },
-            );
+                itemCount: snapshot.data?.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                      title: Text(snapshot.data?[index]['name']),
+                      onTap: (() async {
+                        await Navigator.pushNamed(context, '/edit', arguments: {
+                          'name': snapshot.data?[index]['name'],
+                          'uID': snapshot.data?[index]['uID'],
+                        });
+                        setState(() {});
+                      }));
+                });
           } else {
             return const Center(
               child: CircularProgressIndicator(),

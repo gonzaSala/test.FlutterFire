@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 //PAGINAS
 import 'package:crud/pages/home_page.dart';
 import 'package:crud/pages/add_name.dart';
+import 'package:crud/pages/edit_name.dart';
 //SERVICIOS
 import 'package:crud/services/firebase_services.dart';
 //FIREBASE
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const Home(),
         '/add': (context) => const AddNamePage(),
+        '/edit': (context) => const EditNamePage(),
       },
     );
   }
