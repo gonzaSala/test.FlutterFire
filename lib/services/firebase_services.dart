@@ -13,7 +13,7 @@ Future<List> getPeople() async {
   for (var doc in querySnapshot.docs) {
     final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     final person = {
-      'name ': data['name'],
+      'name': data['name'],
       'uID': doc.id,
     };
 
@@ -28,4 +28,8 @@ Future<void> addPeople(String name) async {
 
 Future<void> updatePeople(String uID, String newName) async {
   await db.collection('people').doc(uID).set({'name': newName});
+}
+
+Future<void> deletePeople(String uID) async {
+  await db.collection('people').doc(uID).delete();
 }

@@ -24,15 +24,56 @@ class _HomeState extends State<Home> {
             return ListView.builder(
                 itemCount: snapshot.data?.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                      title: Text(snapshot.data?[index]['name']),
-                      onTap: (() async {
-                        await Navigator.pushNamed(context, '/edit', arguments: {
-                          'name': snapshot.data?[index]['name'],
-                          'uID': snapshot.data?[index]['uID'],
-                        });
-                        setState(() {});
-                      }));
+                  return Dismissible(
+                    key: Key(snapshot.data?[index]['uID']),
+                    onDismissed: (direction) async {
+                      await deletePeople(snapshot.data?[index]['uID']);
+                    },
+                    confirmDismiss: (direction) async {
+                      bool result = false;
+
+                      result = await showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text(
+                                  'Esta seguro que quiere eliminar a ${snapshot.data?[index]['name']}?'),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      return Navigator.pop(context, false);
+                                    },
+                                    child: const Text(
+                                      'Cancelar',
+                                      style: TextStyle(color: Colors.redAccent),
+                                    )),
+                                TextButton(
+                                    onPressed: () {
+                                      return Navigator.pop(context, true);
+                                    },
+                                    child: const Text('Si, estoy seguro'))
+                              ],
+                            );
+                          });
+
+                      return result;
+                    },
+                    background: Container(
+                      color: Colors.red,
+                      child: const Icon(Icons.delete),
+                    ),
+                    direction: DismissDirection.endToStart,
+                    child: ListTile(
+                        title: Text(snapshot.data?[index]['name']),
+                        onTap: (() async {
+                          await Navigator.pushNamed(context, '/edit',
+                              arguments: {
+                                'name': snapshot.data?[index]['name'],
+                                'uID': snapshot.data?[index]['uID'],
+                              });
+                          setState(() {});
+                        })),
+                  );
                 });
           } else {
             return const Center(
