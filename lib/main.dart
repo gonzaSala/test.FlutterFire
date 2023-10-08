@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mi Proyecto Flutter',
+      title: 'Empezando',
       initialRoute: '/',
       routes: {
         '/': (context) => const Home(),

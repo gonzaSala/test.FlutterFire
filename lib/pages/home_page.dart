@@ -28,6 +28,7 @@ class _HomeState extends State<Home> {
                     key: Key(snapshot.data?[index]['uID']),
                     onDismissed: (direction) async {
                       await deletePeople(snapshot.data?[index]['uID']);
+                      snapshot.data?.removeAt(index);
                     },
                     confirmDismiss: (direction) async {
                       bool result = false;
